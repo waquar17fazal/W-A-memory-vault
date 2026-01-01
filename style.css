@@ -146,3 +146,40 @@ body::before {
 body.fade-out::before {
   pointer-events: none;
 }
+/* 🌌 Animated background container */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Floating gradient blobs */
+.animated-bg::before,
+.animated-bg::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255,77,109,0.25), transparent 70%);
+  animation: float 18s infinite ease-in-out;
+  filter: blur(40px);
+}
+
+.animated-bg::after {
+  background: radial-gradient(circle, rgba(120,160,255,0.25), transparent 70%);
+  animation-delay: -9s;
+}
+
+/* Floating motion */
+@keyframes float {
+  0% {
+    transform: translate(-10%, -10%) scale(1);
+  }
+  50% {
+    transform: translate(60vw, 40vh) scale(1.2);
+  }
+  100% {
+    transform: translate(-10%, -10%) scale(1);
+  }
+}
