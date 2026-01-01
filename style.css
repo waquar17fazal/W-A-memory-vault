@@ -114,3 +114,27 @@ body {
   transform: scale(1.04);
   box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
+/* Folder open effect */
+.card.open {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Screen fade */
+body.fade-out::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 999;
+  animation: fadeToBlack 0.6s ease forwards;
+}
+
+@keyframes fadeToBlack {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
