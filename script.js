@@ -8,3 +8,13 @@ function checkPassword() {
     alert("Wrong password");
   }
 }
+
+function openLockedMemory() {
+  var pass = prompt("Enter memory password");
+
+  if (pass === "5678") {
+    window.location.href = "memories/memory2.html";
+  } else {
+    alert("Access denied");
+  }
+}
