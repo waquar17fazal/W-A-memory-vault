@@ -142,3 +142,7 @@ body.fade-out::before {
 body::before {
   pointer-events: none;
 }
+/* iOS back-button safety */
+body.fade-out::before {
+  pointer-events: none;
+}
