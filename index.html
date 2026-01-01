@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Memory Vault</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PASSWORD SCREEN -->
-<div id="loginBox" class="screen">
-  <h2>Enter Password</h2>
-  <input type="password" id="password" placeholder="Password">
-  <br><br>
-  <button onclick="checkPassword()">Enter</button>
-</div>
-
-<!-- MAIN CONTENT (COMPLETELY HIDDEN INITIALLY) -->
-<div id="content" class="screen hidden">
-
-  <h1>Our Memories</h1>
-
-  <div class="memory-grid">
-
-    <a href="memories/memory1.html"
-       class="card cover"
-       style="background-image:url('assets/cover1.png')">
-      <span>Memory One</span>
-    </a>
-
-    <div class="card cover locked"
-         style="background-image:url('assets/cover2.png')"
-         onclick="openLockedMemory()">
-      <span>Memory Two 🔒</span>
-    </div>
-
+  <!-- LOGIN SCREEN -->
+  <div id="loginBox" class="screen">
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="Password">
+    <br><br>
+    <button onclick="checkPassword()">Enter</button>
   </div>
 
-</div>
+  <!-- MAIN CONTENT (HIDDEN UNTIL LOGIN) -->
+  <div id="content" class="screen hidden">
 
-<script src="script.js"></script>
+    <h1>Our Memories</h1>
+
+    <div class="memory-grid">
+
+      <!-- OPEN MEMORY -->
+      <div class="card cover"
+           style="background-image:url('assets/cover1.png')"
+           onclick="openMemory('memories/memory1.html', this)">
+        <span>Memory One</span>
+      </div>
+
+      <!-- LOCKED MEMORY -->
+      <div class="card cover locked"
+           style="background-image:url('assets/cover2.png')"
+           onclick="openLockedMemoryAnimated(this)">
+        <span>Memory Two 🔒</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
 </body>
 </html>
