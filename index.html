@@ -2,11 +2,29 @@
 <html>
 <head>
   <title>Memory Vault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Hello 👋 Your website is working</h1>
-<p>If you can see this, GitHub Pages is set up correctly.</p>
+<!-- PASSWORD SCREEN -->
+<div id="loginBox">
+  <h2>Enter Password</h2>
+  <input type="password" id="password" placeholder="Password">
+  <br><br>
+  <button onclick="checkPassword()">Enter</button>
+</div>
 
+<!-- MAIN CONTENT (HIDDEN) -->
+<div id="content" style="display:none;">
+  <h1>Our Memories</h1>
+
+  <div class="memory-grid">
+    <div class="card">Memory One</div>
+    <div class="card">Memory Two 🔒</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
