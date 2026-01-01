@@ -14,6 +14,9 @@ function showContent() {
   document.getElementById("loginBox").classList.add("hidden");
   document.getElementById("content").classList.remove("hidden");
   document.body.classList.remove("fade-out");
+
+  const video = document.getElementById("bgVideo");
+if (video) video.play().catch(() => {});
 }
 
 // ---- OPEN MEMORY WITH ANIMATION ----
