@@ -20,13 +20,22 @@ function showContent() {
 function openMemory(url, card) {
   card.classList.add("open");
 
-  setTimeout(() => {
-    document.body.classList.add("fade-out");
-  }, 150);
+  document.body.classList.add("fade-out");
 
   setTimeout(() => {
     window.location.href = url;
-  }, 600);
+  }, 500);
+}
+
+function openLockedMemoryAnimated(card) {
+  // 🔐 PROMPT MUST BE IMMEDIATE
+  var pass = prompt("Enter memory password");
+
+  if (pass === "5678") {
+    openMemory("memories/memory2.html", card);
+  } else if (pass !== null) {
+    alert("Access denied");
+  }
 }
 
 // ---- LOCKED MEMORY ----
