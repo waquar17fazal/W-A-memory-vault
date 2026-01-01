@@ -1,13 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>CEREBREXIA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* Gallery layout */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Fullscreen viewer */
+    #viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #viewer img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 <body>
 
-<h1>CEREBREXIA</h1>
-<p>This memory is open.</p>
+<h1 style="text-align:center; margin-top:20px;">CEREBREXIA</h1>
+
+<div class="gallery" id="gallery"></div>
+
+<!-- Fullscreen viewer -->
+<div id="viewer" onclick="closeViewer()">
+  <img id="viewerImg">
+</div>
+
+<script>
+  const gallery = document.getElementById("gallery");
+
+  // CHANGE 47 IF YOU ADD MORE LATER
+  for (let i = 1; i <= 47; i++) {
+    const img = document.createElement("img");
+    img.src = "../assets/CEREBREXIA/photo" + i + ".jpg";
+    img.onclick = () => openViewer(img.src);
+    gallery.appendChild(img);
+  }
+
+  function openViewer(src) {
+    document.getElementById("viewerImg").src = src;
+    document.getElementById("viewer").style.display = "flex";
+  }
+
+  function closeViewer() {
+    document.getElementById("viewer").style.display = "none";
+  }
+</script>
 
 </body>
 </html>
