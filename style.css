@@ -50,3 +50,20 @@ a.card {
 .locked {
   opacity: 0.9;
 }
+.cover {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 18px;
+}
+
+.cover span {
+  background: rgba(0,0,0,0.6);
+  padding: 8px 14px;
+  border-radius: 10px;
+}
