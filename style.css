@@ -33,3 +33,20 @@ button {
   background: #1e1e1e;
   border-radius: 14px;
 }
+a.card {
+  text-decoration: none;
+  color: white;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.locked {
+  opacity: 0.9;
+}
