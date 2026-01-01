@@ -9,11 +9,23 @@ function checkPassword() {
   }
 }
 
-function openLockedMemory() {
+function openMemory(url, card) {
+  card.classList.add("open");
+
+  setTimeout(function () {
+    document.body.classList.add("fade-out");
+  }, 200);
+
+  setTimeout(function () {
+    window.location.href = url;
+  }, 600);
+}
+
+function openLockedMemoryAnimated(card) {
   var pass = prompt("Enter memory password");
 
   if (pass === "5678") {
-    window.location.href = "memories/memory2.html";
+    openMemory("memories/memory2.html", card);
   } else {
     alert("Access denied");
   }
