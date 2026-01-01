@@ -150,8 +150,8 @@ body.fade-out::before {
 .animated-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
-  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Floating gradient blobs */
