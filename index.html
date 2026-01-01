@@ -17,12 +17,19 @@
 
 <!-- MAIN CONTENT (HIDDEN) -->
 <div id="content" style="display:none;">
-  <h1>Our Memories</h1>
+ <div class="memory-grid">
 
-  <div class="memory-grid">
-    <div class="card">Memory One</div>
-    <div class="card">Memory Two 🔒</div>
+  <a href="memories/memory1.html" class="card">
+    Memory One
+  </a>
+
+  <div class="card locked" onclick="openLockedMemory()">
+    Memory Two 🔒
   </div>
+
+</div> <h1>Our Memories</h1>
+
+
 </div>
 
 <script src="script.js"></script>
