@@ -138,3 +138,7 @@ body.fade-out::before {
     opacity: 1;
   }
 }
+/* Prevent blank screen on back navigation */
+body::before {
+  pointer-events: none;
+}
