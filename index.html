@@ -14,18 +14,23 @@
   <br><br>
   <button onclick="checkPassword()">Enter</button>
 </div>
+<div class="memory-grid">
 
-<!-- MAIN CONTENT (HIDDEN) -->
-<div id="content" style="display:none;">
- <div class="memory-grid">
-
-  <a href="memories/memory1.html" class="card">
-    Memory One
+  <a href="memories/memory1.html" class="card cover"
+     style="background-image:url('assets/cover1.jpg')">
+    <span>Memory One</span>
   </a>
 
-  <div class="card locked" onclick="openLockedMemory()">
-    Memory Two 🔒
+  <div class="card cover locked"
+       style="background-image:url('assets/cover2.jpg')"
+       onclick="openLockedMemory()">
+    <span>Memory Two 🔒</span>
   </div>
+
+</div>
+<!-- MAIN CONTENT (HIDDEN) -->
+<div id="content" style="display:none;">
+
 
 </div> <h1>Our Memories</h1>
 
