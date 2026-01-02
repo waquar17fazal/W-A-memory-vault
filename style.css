@@ -1,20 +1,9 @@
 /* =========================
-   GLOBAL LAYOUT & VISIBILITY
+   RESET & BASE
 ========================= */
-
-.screen {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+* {
+  box-sizing: border-box;
 }
-
-.hidden {
-  display: none !important;
-}
-
-/* =========================
-   BODY & THEME
-========================= */
 
 body {
   margin: 0;
@@ -23,20 +12,21 @@ body {
   color: #fff;
   font-family: "Poppins", Arial, sans-serif;
   text-align: center;
-  animation: fadeIn 1.2s ease;
   overflow-x: hidden;
 }
 
-/* Fade-in on load */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(1.02);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* =========================
+   SCREEN CONTROL
+========================= */
+
+.screen {
+  min-height: 100vh;
+  display: block;
+  padding-bottom: 40px;
+}
+
+.hidden {
+  display: none !important;
 }
 
 /* =========================
@@ -44,14 +34,13 @@ body {
 ========================= */
 
 h1 {
-  margin-top: 40px;
-  font-size: 32px;
+  margin: 30px 0 10px;
+  font-size: 30px;
   letter-spacing: 1px;
 }
 
 #loginBox h2 {
   font-weight: 500;
-  letter-spacing: 1px;
 }
 
 /* =========================
@@ -68,37 +57,37 @@ button {
 
 button {
   background: linear-gradient(135deg, #ff4d6d, #ff758f);
-  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
   color: white;
+  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
   cursor: pointer;
 }
 
 /* =========================
-   MEMORY GRID & CARDS
+   MEMORY GRID (CRITICAL FIX)
 ========================= */
 
-#content {
-  position: relative;
-  z-index: 2;
-}
-
 .memory-grid {
-  margin: 40px auto 0;
+  width: 100%;
+  max-width: 720px;
+  margin: 30px auto 0;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* ALWAYS 2 */
   gap: 20px;
 
-  width: 100%;
-  max-width: 680px;
   padding: 0 16px;
-  box-sizing: border-box;
 }
+
+/* =========================
+   CARD (ONE SOURCE OF TRUTH)
+========================= */
 
 .card {
   width: 100%;
-  aspect-ratio: 1 / 1;   /* PERFECT SQUARE */
+  aspect-ratio: 1 / 1; /* PERFECT SQUARE — FIXES SIZE ISSUE */
+
   border-radius: 18px;
-  background: #1e1e1e;
+  background-color: #1e1e1e;
 
   display: flex;
   align-items: flex-end;
@@ -106,7 +95,7 @@ button {
   overflow: hidden;
   cursor: pointer;
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
@@ -119,21 +108,27 @@ button {
 }
 
 /* =========================
-   COVER STYLE
+   COVER IMAGE & TEXT
 ========================= */
 
 .cover {
+  width: 100%;
+  height: 100%;
+
   background-size: cover;
   background-position: center;
+
+  display: flex;
+  align-items: flex-end;
   padding: 14px;
-  font-size: 16px;
-  font-weight: bold;
 }
 
 .cover span {
   background: rgba(0, 0, 0, 0.6);
-  padding: 8px 14px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 /* =========================
@@ -145,7 +140,7 @@ button {
   z-index: 10;
 }
 
-/* Screen fade on navigation */
+/* Fade to black when opening */
 body.fade-out::before {
   content: "";
   position: fixed;
@@ -157,65 +152,12 @@ body.fade-out::before {
 }
 
 @keyframes fadeToBlack {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* =========================
-   🌌 ANIMATED BACKGROUND
-   (Only after login)
-========================= */
-
-.animated-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Hide animation before login */
-#content.hidden .animated-bg {
-  display: none;
-}
-
-/* Floating gradient blobs */
-.animated-bg::before,
-.animated-bg::after {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  filter: blur(40px);
-  animation: float 18s infinite ease-in-out;
-}
-
-.animated-bg::before {
-  background: radial-gradient(circle, rgba(255, 77, 109, 0.25), transparent 70%);
-}
-
-.animated-bg::after {
-  background: radial-gradient(circle, rgba(120, 160, 255, 0.25), transparent 70%);
-  animation-delay: -9s;
-}
-
-/* Floating motion */
-@keyframes float {
-  0% {
-    transform: translate(-10%, -10%) scale(1);
-  }
-  50% {
-    transform: translate(60vw, 40vh) scale(1.2);
-  }
-  100% {
-    transform: translate(-10%, -10%) scale(1);
-  }
-}
-/* =========================
-   🎥 BACKGROUND VIDEO
+   BACKGROUND VIDEO
 ========================= */
 
 #bgVideo {
@@ -234,10 +176,11 @@ body.fade-out::before {
   display: none;
 }
 
-/* Ensure content stays above video */
-#content,
-.memory-grid,
-.card {
+/* =========================
+   CONTENT ABOVE EVERYTHING
+========================= */
+
+#content {
   position: relative;
   z-index: 2;
 }
