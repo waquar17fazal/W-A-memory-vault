@@ -98,10 +98,12 @@
   });
 
   function openViewer(index) {
-    currentIndex = index;
-    viewerImg.src = "../assets/CEREBREXIA/photo" + (index + 1) + ".jpg";
-    viewer.style.display = "flex";
-  }
+  currentIndex = index;
+  viewerImg.src = "../assets/CEREBREXIA/photo" + (index + 1) + ".jpg";
+  viewerImg.classList.remove("zoomed");
+  zoomed = false;
+  viewer.style.display = "flex";
+}
 
   function closeViewer() {
     viewer.style.display = "none";
@@ -129,15 +131,19 @@
     }
   });
 
-  function nextPhoto() {
-    currentIndex = (currentIndex + 1) % totalPhotos;
-    viewerImg.src = "../assets/CEREBREXIA/photo" + (currentIndex + 1) + ".jpg";
-  }
+function nextPhoto() {
+  currentIndex = (currentIndex + 1) % totalPhotos;
+  viewerImg.src = "../assets/CEREBREXIA/photo" + (currentIndex + 1) + ".jpg";
+  viewerImg.classList.remove("zoomed");
+  zoomed = false;
+}
 
   function prevPhoto() {
-    currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
-    viewerImg.src = "../assets/CEREBREXIA/photo" + (currentIndex + 1) + ".jpg";
-  }
+  currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
+  viewerImg.src = "../assets/CEREBREXIA/photo" + (currentIndex + 1) + ".jpg";
+  viewerImg.classList.remove("zoomed");
+  zoomed = false;
+}
   // ---- DOUBLE TAP TO ZOOM ----
 let lastTap = 0;
 let zoomed = false;
