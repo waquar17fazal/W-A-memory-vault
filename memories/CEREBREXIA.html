@@ -138,6 +138,22 @@
     currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
     viewerImg.src = "../assets/CEREBREXIA/photo" + (currentIndex + 1) + ".jpg";
   }
+  // ---- DOUBLE TAP TO ZOOM ----
+let lastTap = 0;
+let zoomed = false;
+
+viewerImg.addEventListener("touchend", function (e) {
+  const currentTime = new Date().getTime();
+  const tapLength = currentTime - lastTap;
+
+  if (tapLength < 300 && tapLength > 0) {
+    // Double tap detected
+    zoomed = !zoomed;
+    viewerImg.classList.toggle("zoomed", zoomed);
+  }
+
+  lastTap = currentTime;
+});
 </script>
 
 </body>
