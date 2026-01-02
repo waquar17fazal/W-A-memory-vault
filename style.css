@@ -1,27 +1,23 @@
-/* =========================
-   RESET & BASE
-========================= */
+/* RESET */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* BODY */
 body {
-  margin: 0;
   min-height: 100vh;
+  font-family: "Poppins", Arial, sans-serif;
   background: radial-gradient(circle at top, #2a0f1c, #0b0b0b 60%);
   color: #fff;
-  font-family: "Poppins", Arial, sans-serif;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* =========================
-   SCREEN CONTROL
-========================= */
-
+/* SCREENS */
 .screen {
   min-height: 100vh;
-  display: block;
   padding-bottom: 40px;
 }
 
@@ -29,26 +25,18 @@ body {
   display: none !important;
 }
 
-/* =========================
-   HEADINGS
-========================= */
-
+/* HEADINGS */
 h1 {
-  margin: 30px 0 10px;
+  margin: 30px 0 20px;
   font-size: 30px;
-  letter-spacing: 1px;
 }
 
-#loginBox h2 {
-  font-weight: 500;
+h2 {
+  margin-top: 40px;
 }
 
-/* =========================
-   INPUTS & BUTTONS
-========================= */
-
-input,
-button {
+/* INPUTS & BUTTONS */
+input, button {
   padding: 12px;
   font-size: 16px;
   border-radius: 8px;
@@ -58,63 +46,57 @@ button {
 button {
   background: linear-gradient(135deg, #ff4d6d, #ff758f);
   color: white;
-  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
   cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255,77,109,0.4);
 }
 
-/* =========================
-   MEMORY GRID (CRITICAL FIX)
-========================= */
+/* CONTENT LAYER */
+#content {
+  position: relative;
+  z-index: 2;
+}
 
+/* MEMORY GRID — ALWAYS 2 COLUMNS */
 .memory-grid {
   width: 100%;
   max-width: 720px;
-  margin: 30px auto 0;
+  margin: 0 auto;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* ALWAYS 2 */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 
   padding: 0 16px;
 }
 
-/* =========================
-   CARD (ONE SOURCE OF TRUTH)
-========================= */
-
+/* CARD — SAME SIZE ALWAYS */
 .card {
   width: 100%;
-  aspect-ratio: 1 / 1; /* PERFECT SQUARE — FIXES SIZE ISSUE */
-
+  aspect-ratio: 1 / 1;
   border-radius: 18px;
   background-color: #1e1e1e;
 
   display: flex;
   align-items: flex-end;
-
   overflow: hidden;
-  cursor: pointer;
 
+  cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
   transform: scale(1.04);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
 
 .locked {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* =========================
-   COVER IMAGE & TEXT
-========================= */
-
+/* COVER IMAGE */
 .cover {
   width: 100%;
   height: 100%;
-
   background-size: cover;
   background-position: center;
 
@@ -124,23 +106,20 @@ button {
 }
 
 .cover span {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 600;
 }
 
-/* =========================
-   FOLDER OPEN ANIMATION
-========================= */
-
+/* OPEN ANIMATION */
 .card.open {
   transform: scale(1.1);
-  z-index: 10;
+  z-index: 5;
 }
 
-/* Fade to black when opening */
+/* FADE TRANSITION */
 body.fade-out::before {
   content: "";
   position: fixed;
@@ -153,34 +132,5 @@ body.fade-out::before {
 
 @keyframes fadeToBlack {
   from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* =========================
-   BACKGROUND VIDEO
-========================= */
-
-#bgVideo {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
-  filter: brightness(0.6) saturate(1.2);
-}
-
-/* Hide video before login */
-#content.hidden #bgVideo {
-  display: none;
-}
-
-/* =========================
-   CONTENT ABOVE EVERYTHING
-========================= */
-
-#content {
-  position: relative;
-  z-index: 2;
+  to   { opacity: 1; }
 }
