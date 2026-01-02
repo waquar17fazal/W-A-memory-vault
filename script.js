@@ -2,11 +2,19 @@ function checkPassword() {
   const pass = document.getElementById("password").value;
 
   if (pass === "1234") {
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("content").classList.remove("hidden");
+    sessionStorage.setItem("loggedIn", "yes");
+    showMain();
   } else {
     alert("Wrong password");
   }
+}
+
+function showMain() {
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("content").classList.remove("hidden");
+
+  // 🔧 IMPORTANT: remove fade overlay if present
+  document.body.classList.remove("fade-out");
 }
 
 function openMemory(url, card) {
@@ -27,3 +35,17 @@ function openLockedMemory(card) {
     alert("Access denied");
   }
 }
+
+/* =========================
+   🔑 BACK BUTTON FIX (CRITICAL)
+========================= */
+window.addEventListener("pageshow", function () {
+  // Remove black overlay
+  document.body.classList.remove("fade-out");
+
+  // Restore main screen if already logged in
+  if (sessionStorage.getItem("loggedIn") === "yes") {
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("content").classList.remove("hidden");
+  }
+});
