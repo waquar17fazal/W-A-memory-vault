@@ -4,59 +4,59 @@
   <meta charset="UTF-8">
   <title>Memory Vault</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- LOGIN SCREEN -->
-  <div id="loginBox" class="screen">
-    <h2>Enter Password</h2>
-    <input type="password" id="password" placeholder="Password">
-    <br><br>
-    <button onclick="checkPassword()">Enter</button>
+<!-- LOGIN SCREEN -->
+<div id="loginBox" class="screen">
+  <h2>Enter Password</h2>
+  <input type="password" id="password" placeholder="Password">
+  <br><br>
+  <button onclick="checkPassword()">Enter</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content" class="screen hidden">
+
+  <!-- OPTIONAL BACKGROUND VIDEO -->
+  <!--
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="assets/bg.mp4" type="video/mp4">
+  </video>
+  -->
+
+  <h1>Our Memories</h1>
+
+  <div class="memory-grid">
+
+    <!-- CEREBREXIA -->
+    <button type="button"
+      class="card cover"
+      style="background-image:url('assets/cover1.png')"
+      onclick="openMemory('memories/CEREBREXIA.html', this)">
+      <span>CEREBREXIA</span>
+    </button>
+
+    <!-- MEMORY TWO (LOCKED) -->
+    <button type="button"
+      class="card cover locked"
+      style="background-image:url('assets/cover2.png')"
+      onclick="openLockedMemory(this)">
+      <span>Memory Two 🔒</span>
+    </button>
+
+    <!-- UTSAV 4.0 -->
+    <button type="button"
+      class="card cover"
+      style="background-image:url('assets/utsav.png')"
+      onclick="openMemory('memories/UTSAV_4_0.html', this)">
+      <span>UTSAV 4.0</span>
+    </button>
+
   </div>
+</div>
 
-  <!-- MAIN CONTENT (HIDDEN UNTIL LOGIN) -->
-  <div id="content" class="screen hidden">
-  <!-- Background Video -->
-<video id="bgVideo" autoplay muted loop playsinline>
-  <source src="assets/bg.mp4" type="video/mp4">
-</video>
-    <!-- Animated Background -->
-<div class="animated-bg"></div>
-
-    <h1>Our Memories</h1>
-
-    <div class="memory-grid">
-
-      <!-- OPEN MEMORY -->
-      <div class="card cover"
-           style="background-image:url('assets/cover1.png')"
-           onclick="openMemory('memories/CEREBREXIA.html', this)">
-        <span>CEREBREXIA</span>
-      </div>
-
-      <!-- LOCKED MEMORY -->
-      <div class="card cover locked"
-           style="background-image:url('assets/cover2.png')"
-           onclick="openLockedMemoryAnimated(this)">
-        <span>Memory Two 🔒</span>
-      </div>
-      <!-- UTSAV 4.0 MEMORY -->
-<button type="button"
-        class="card cover"
-        style="background-image:url('assets/utsav.png')"
-        onclick="openMemory('memories/UTSAV_4_0.html', this)">
-  <span>UTSAV 4.0</span>
-</button>
-
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
